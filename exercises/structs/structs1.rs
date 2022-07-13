@@ -19,7 +19,7 @@ mod tests {
     #[test]
     fn classic_c_structs() {
         // TODO: Instantiate a classic c struct!
-        let green = ColorClassicStruct{
+        let green = ColorClassicStruct {
             name: "green".to_string(),
             hex: "#00FF00".to_string(),
         };
@@ -40,7 +40,7 @@ mod tests {
     #[test]
     fn unit_structs() {
         // TODO: Instantiate a unit struct!
-        let unit_struct = UnitStruct{};
+        let unit_struct = UnitStruct {};
         let message = format!("{:?}s are fun!", unit_struct);
 
         assert_eq!(message, "UnitStructs are fun!");

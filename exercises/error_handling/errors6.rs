@@ -14,7 +14,7 @@ use std::num::ParseIntError;
 #[derive(PartialEq, Debug)]
 enum ParsePosNonzeroError {
     Creation(CreationError),
-    ParseInt(ParseIntError)
+    ParseInt(ParseIntError),
 }
 
 impl ParsePosNonzeroError {
@@ -28,18 +28,14 @@ impl ParsePosNonzeroError {
     }
 }
 
-fn parse_pos_nonzero(s: &str)
-    -> Result<PositiveNonzeroInteger, ParsePosNonzeroError>
-{
+fn parse_pos_nonzero(s: &str) -> Result<PositiveNonzeroInteger, ParsePosNonzeroError> {
     // TODO: change this to return an appropriate error instead of panicking
     // when `parse()` returns an error.
     match s.parse() {
-        Ok(v) => {
-            match PositiveNonzeroInteger::new(v) {
-                Ok(v) => Ok(v),
-                Err(e) => Err(ParsePosNonzeroError::from_creation(e)),
-            }
-        }
+        Ok(v) => match PositiveNonzeroInteger::new(v) {
+            Ok(v) => Ok(v),
+            Err(e) => Err(ParsePosNonzeroError::from_creation(e)),
+        },
         Err(e) => Err(ParsePosNonzeroError::parse_int(e)),
     }
 }
@@ -60,7 +56,7 @@ impl PositiveNonzeroInteger {
         match value {
             x if x < 0 => Err(CreationError::Negative),
             x if x == 0 => Err(CreationError::Zero),
-            x => Ok(PositiveNonzeroInteger(x as u64))
+            x => Ok(PositiveNonzeroInteger(x as u64)),
         }
     }
 }

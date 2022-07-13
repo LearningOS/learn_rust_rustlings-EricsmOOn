@@ -12,7 +12,6 @@ macro_rules! my_macro {
     };
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
